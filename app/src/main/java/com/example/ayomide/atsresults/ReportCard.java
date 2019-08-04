@@ -1,6 +1,7 @@
 package com.example.ayomide.atsresults;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -63,21 +64,27 @@ public class ReportCard extends AppCompatActivity {
             if (Common.isConnectedToTheInternet(getBaseContext()))
             {
                 getReport( pupilId );
-                Toast.makeText( ReportCard.this, "Tap the report card if you want to share through Email.", Toast.LENGTH_LONG ).show();
+                Toast.makeText( ReportCard.this, "Tap the screen to share the result ", Toast.LENGTH_LONG ).show();
             }
         }
     }
 
     private void sendEmail()
     {
-        String subject = currentPupil.getName()+"'s report card";
-        String text = currentPupil.getReportPdf();
         Intent intent = new Intent();
-        intent.setType( "message/rfc2822" ); //message/rfc2822 is a mime type for email messages
-        intent.setAction(  Intent.ACTION_SEND  );
-        intent.putExtra( Intent.EXTRA_SUBJECT, subject );
-        intent.putExtra( Intent.EXTRA_TEXT, text );
-        startActivity(Intent.createChooser(intent, "Share using"));
+        intent.setData( Uri.parse( "mailto:" ) );
+        intent.setType( "text/plain" );
+
+        intent.putExtra( Intent.EXTRA_SUBJECT, currentPupil.getName()+"'s report card" );
+        //put message of email in intent
+        intent.putExtra( Intent.EXTRA_TEXT, currentPupil.getReportPdf() );
+
+        if (Common.isConnectedToTheInternet( getBaseContext() ))
+        {
+            startActivity(Intent.createChooser(intent, "Share using"));
+        }
+        else
+            Toast.makeText(ReportCard.this, "Please check your internet connection", Toast.LENGTH_SHORT).show();
     }
 
     private void getReport(String pupilId)

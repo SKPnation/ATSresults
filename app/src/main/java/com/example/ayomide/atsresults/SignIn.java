@@ -114,6 +114,8 @@ public class SignIn extends AppCompatActivity {
                 }
             } );
         }
+        else
+            Toast.makeText(SignIn.this, "Please check your internet connection", Toast.LENGTH_SHORT).show();
     }
 
 }

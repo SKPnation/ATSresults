@@ -1,5 +1,7 @@
 package com.example.ayomide.atsresults;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -62,7 +64,7 @@ public class BillActivity extends AppCompatActivity {
             if (Common.isConnectedToTheInternet( getBaseContext() ))
             {
                 getBill(pupilId);
-                Toast.makeText( BillActivity.this, "Tap the link above if you want to share the child's school fees", Toast.LENGTH_LONG ).show();
+                Toast.makeText( BillActivity.this, "Tap the screen to share the file ", Toast.LENGTH_LONG ).show();
             }
         }
     }
@@ -88,6 +90,20 @@ public class BillActivity extends AppCompatActivity {
 
     private void sendEmail()
     {
+        Intent intent = new Intent();
+        intent.setData( Uri.parse( "mailto:" ) );
+        intent.setType( "text/plain" );
+
+        intent.putExtra( Intent.EXTRA_SUBJECT, currentPupil.getName()+"'s report card" );
+        //put message of email in intent
+        intent.putExtra( Intent.EXTRA_TEXT, currentPupil.getReportPdf() );
+
+        if (Common.isConnectedToTheInternet( getBaseContext() ))
+        {
+            startActivity(Intent.createChooser(intent, "Share using"));
+        }
+        else
+            Toast.makeText(BillActivity.this, "Please check your internet connection", Toast.LENGTH_SHORT).show();
     }
 
 

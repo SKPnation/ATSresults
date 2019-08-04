@@ -136,7 +136,9 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_classes) {
             // Handle the camera action
         } else if (id == R.id.nav_help) {
-            //..
+
+            startActivity( new Intent( MainActivity.this, Help.class ) );
+
         } else if (id == R.id.nav_sign_out) {
 
             //Delete remembered user and password

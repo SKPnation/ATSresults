@@ -1,9 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Help">
+    tools:context=".Help"
+    android:orientation="vertical">
 
-</android.support.constraint.ConstraintLayout>
+    <EditText
+        android:id="@+id/etRecipient"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Recipient email"
+        android:text="adorabletoesschool@gmail.com"
+        android:inputType="textEmailAddress"/>
+
+    <EditText
+        android:id="@+id/etSubject"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Subject"
+        android:inputType="text"/>
+
+    <EditText
+        android:id="@+id/etMessage"
+        android:minHeight="150dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="enter message here..."
+        android:gravity="start"
+        android:inputType="text"/>
+
+    <Button
+        android:id="@+id/btnSend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:text="SEND"
+        android:textColor="#fff"
+        android:background="@color/colorAccent"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="OR"
+        android:textSize="30sp"
+        android:layout_marginTop="30dp"
+        android:layout_gravity="center_horizontal"/>
+
+</LinearLayout>
