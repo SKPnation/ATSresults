@@ -64,7 +64,7 @@ public class ReportCard extends AppCompatActivity {
             if (Common.isConnectedToTheInternet(getBaseContext()))
             {
                 getReport( pupilId );
-                Toast.makeText( ReportCard.this, "Tap the screen to share the result ", Toast.LENGTH_LONG ).show();
+                Toast.makeText( ReportCard.this, "Tap the screen to share the report ", Toast.LENGTH_LONG ).show();
             }
         }
     }
