@@ -34,7 +34,7 @@
                 android:textColor="#fff"
                 app:met_floatingLabel="highlight"
                 app:met_primaryColor="#fff"
-                android:textColorHighlight="#fff"
+                android:textColorHighlight="#aaa"
                 android:inputType="number" />
 
         </android.support.design.widget.TextInputLayout>
@@ -55,7 +55,7 @@
                 android:textColor="#fff"
                 app:met_floatingLabel="highlight"
                 app:met_primaryColor="#fff"
-                android:textColorHighlight="#fff"
+                android:textColorHighlight="#aaa"
                 android:inputType="textPassword" />
 
         </android.support.design.widget.TextInputLayout>
